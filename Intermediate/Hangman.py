@@ -80,7 +80,7 @@ def hangman():
 
         guess = input("Guess a letter or the whole word: ").lower()
 
-        # ✅ Whole word guess
+        
         if len(guess) > 1:
             if guess == word:
                 print("You win! The word was:", word)
@@ -90,7 +90,7 @@ def hangman():
                 attempts -= 1
                 continue
 
-        # ✅ Single letter guess
+        
         if guess in guessed:
             print("You already guessed that!")
             continue
