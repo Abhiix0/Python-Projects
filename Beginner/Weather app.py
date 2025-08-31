@@ -2,7 +2,7 @@ import requests
 import datetime
 
 # ✅ Your OpenWeather API Key
-API_KEY = "6507cfc47dab7eb8ed076d1007c27e38"
+API_KEY = "YOUR API KEY HERE"
 BASE_URL = "https://api.openweathermap.org/data/2.5/weather"
 
 def get_weather(city):
@@ -10,12 +10,9 @@ def get_weather(city):
     params = {
         "q": city,
         "appid": API_KEY,
-        "units": "metric"  # Celsius instead of Kelvin
+        "units": "metric" 
     }
     response = requests.get(BASE_URL, params=params)
-
-    # Debugging: print API response if needed
-    # print(response.status_code, response.json())
 
     if response.status_code == 200:
         data = response.json()
@@ -30,7 +27,6 @@ def get_weather(city):
             "condition": condition
         }
     else:
-        # Return the actual error message from OpenWeather
         try:
             error_msg = response.json().get("message", "Unknown error")
         except:
@@ -53,11 +49,11 @@ def main():
         print(f"💧 Humidity: {weather['humidity']}%")
         print(f"☁ Condition: {weather['condition'].title()}")
         
-        # Bonus logging
+       
         log_weather(weather)
-        print("\n✅ Weather data saved in 'weather_log.txt'")
+        print("\n Weather data saved in 'weather_log.txt'")
     else:
-        print(f"❌ Error: {weather['error']}")
+        print(f" Error: {weather['error']}")
 
 if __name__ == "__main__":
     main()
